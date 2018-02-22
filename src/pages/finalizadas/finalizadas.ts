@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController } from 'ionic-angular';
 import { TwdServiceProvider } from '../../providers/twd-service/twd-service';
 
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-finalizadas',
+  templateUrl: 'finalizadas.html',
 })
-export class HomePage {
+export class FinalizadasPage {
 
   public obj: any;
   public result: any;
@@ -16,11 +17,11 @@ export class HomePage {
   column: string = 'name';
 
   constructor(public navCtrl: NavController,public twdService: TwdServiceProvider, public menuCtrl: MenuController) {
-    this.getAll();
+    this.getAllFinalizadas();
   }
 
-  getAll() {
-    this.twdService.load()
+  getAllFinalizadas() {
+    this.twdService.loadFinalizadas()
       .then(data => {
         this.obj = data;
         this.result = this.obj._embedded.episodes;

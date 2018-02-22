@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController } from 'ionic-angular';
 import { TwdServiceProvider } from '../../providers/twd-service/twd-service';
 
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-canceladas',
+  templateUrl: 'canceladas.html',
 })
-export class HomePage {
+export class CanceladasPage {
 
   public obj: any;
   public result: any;
@@ -16,11 +17,15 @@ export class HomePage {
   column: string = 'name';
 
   constructor(public navCtrl: NavController,public twdService: TwdServiceProvider, public menuCtrl: MenuController) {
-    this.getAll();
+    this.getAllCanceladas();
   }
 
-  getAll() {
-    this.twdService.load()
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad CanceladasPage');
+  }
+
+  getAllCanceladas() {
+    this.twdService.loadCanceladas()
       .then(data => {
         this.obj = data;
         this.result = this.obj._embedded.episodes;
