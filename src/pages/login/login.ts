@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsersProvider } from '../../providers/users/users';
 import { HomePage } from '../home/home';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -11,7 +12,7 @@ import { HomePage } from '../home/home';
 export class LoginPage {
   model: User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private userProvider: UsersProvider, private storage: Storage) {
     this.model = new User();
     this.model.usuario = '';
     this.model.senha = '';
@@ -25,10 +26,9 @@ export class LoginPage {
     this.userProvider.acessar(this.model.usuario, this.model.senha)
       .then((result: any) => {
         this.toast.create({ message: 'Usuário logado com sucesso.', position: 'botton', duration: 5000 }).present();
- 
-        //Salvar o token no Ionic Storage para usar em futuras requisições.
-        //Redirecionar o usuario para outra tela usando o navCtrl
-        //this.navCtrl.pop();
+        console.log(result);
+
+        this.storage.set('id_parceiro', result.id_parceiro);
 
         this.navCtrl.setRoot(HomePage);
       })

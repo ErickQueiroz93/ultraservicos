@@ -9,6 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { CanceladasPage } from '../pages/canceladas/canceladas';
 import { FinalizadasPage } from '../pages/finalizadas/finalizadas';
 import { LoginPage } from '../pages/login/login';
+import { FinalizarPage } from '../pages/finalizar/finalizar';
+import { CancelarPage } from '../pages/cancelar/cancelar';
 import { TwdServiceProvider } from '../providers/twd-service/twd-service';
 import {  HttpModule } from '@angular/http';
 import { SearchPipe } from '../pipes/search/search';
@@ -17,6 +19,8 @@ import { UsersProvider } from '../providers/users/users';
 
 import { HttpClientModule } from '@angular/common/http'; 
 import { IonicStorageModule } from '@ionic/storage';
+import { CancelarProvider } from '../providers/cancelar/cancelar';
+import { FinalizarProvider } from '../providers/finalizar/finalizar';
 
 
 @NgModule({
@@ -27,17 +31,16 @@ import { IonicStorageModule } from '@ionic/storage';
     SortPipe,
     CanceladasPage,
     FinalizadasPage,
-    LoginPage
+    LoginPage,
+    CancelarPage,
+    FinalizarPage
   ],
   imports: [
     HttpModule,
     HttpClientModule,    
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot({
-      name: '__mydb',
-         driverOrder: ['indexeddb', 'sqlite', 'websql']
-    })
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -45,14 +48,18 @@ import { IonicStorageModule } from '@ionic/storage';
     HomePage,
     CanceladasPage,
     FinalizadasPage,
-    LoginPage
+    LoginPage,
+    FinalizarPage,
+    CancelarPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TwdServiceProvider,
-    UsersProvider
+    UsersProvider,
+    CancelarProvider,
+    FinalizarProvider
   ]
 })
 export class AppModule {}

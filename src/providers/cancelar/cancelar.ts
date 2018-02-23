@@ -3,20 +3,20 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class UsersProvider {
+export class CancelarProvider {
 
-  private API_URL = 'http://ultraconsultas.com.br/apiUltraServicos/login.php'
+  private API_URL = 'http://ultraconsultas.com.br/apiUltraServicos/cancelarOS.php'
 
   constructor(public http: HttpClient) {
-    console.log('Hello UsersProvider Provider');
+    console.log('Hello CancelarProvider Provider');
   }
 
-  acessar(usuario: string, senha: string) {
-    
+  canOS(descricao: string, id_parceiro: string) {
+
     return new Promise((resolve, reject) => {
       var data = {
-        usuario: usuario,
-        senha: senha
+        descricao: descricao,
+        id_parceiro: id_parceiro
       };
  
       this.http.post(this.API_URL, data)

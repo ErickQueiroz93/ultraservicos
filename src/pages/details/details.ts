@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { TwdServiceProvider } from "../../providers/twd-service/twd-service";
 import { Episode } from "../../app/models/episode";
+import { FinalizarPage } from "../finalizar/finalizar";
+import { CancelarPage } from "../cancelar/cancelar";
 
 @IonicPage()
 @Component({
@@ -35,5 +37,11 @@ export class DetailsPage {
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad DetailsPage");
+  }
+  irPaginaFinalizar(){
+    this.navCtrl.push(FinalizarPage);
+  }
+  irPaginaCancelar(){
+    this.navCtrl.push(CancelarPage);
   }
 }
