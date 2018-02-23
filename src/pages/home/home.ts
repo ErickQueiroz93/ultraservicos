@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
-import { NavController } from 'ionic-angular';
-=======
 import { NavController, MenuController } from 'ionic-angular';
->>>>>>> 17ab37549988e2bfa235d761804a7e12c83ba26b
 import { TwdServiceProvider } from '../../providers/twd-service/twd-service';
 
 @Component({
@@ -19,11 +15,7 @@ export class HomePage {
   order: number;
   column: string = 'name';
 
-<<<<<<< HEAD
-  constructor(public navCtrl: NavController,public twdService: TwdServiceProvider) {
-=======
   constructor(public navCtrl: NavController,public twdService: TwdServiceProvider, public menuCtrl: MenuController) {
->>>>>>> 17ab37549988e2bfa235d761804a7e12c83ba26b
     this.getAll();
   }
 

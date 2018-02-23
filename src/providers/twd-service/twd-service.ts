@@ -10,22 +10,8 @@ export class TwdServiceProvider {
   }
 
   load() {
-<<<<<<< HEAD
-    if (this.data) {
-      return Promise.resolve(this.data);
-    }
-
     return new Promise(resolve => {
       this.http
-        /*.get(
-          `https://api.tvmaze.com/singlesearch/shows?q=the-walking-dead&embed=episodes`
-        )*/
-=======
-    
-
-    return new Promise(resolve => {
-      this.http
->>>>>>> 17ab37549988e2bfa235d761804a7e12c83ba26b
         .get(
           `http://ultraconsultas.com.br/apiUltraServicos/ordens.php`
         )
@@ -37,17 +23,7 @@ export class TwdServiceProvider {
     });
   }
 
-<<<<<<< HEAD
-  getEpisodeById(id: number) {
-    //if (this.data) {
-      //return Promise.resolve(this.data);
-    //}
-
-    return new Promise(resolve => {
-      this.http
-=======
   loadCanceladas() {
-
     return new Promise(resolve => {
       this.http
         .get(
@@ -62,8 +38,6 @@ export class TwdServiceProvider {
   }
 
   loadFinalizadas() {
-    
-
     return new Promise(resolve => {
       this.http
         .get(
@@ -80,7 +54,6 @@ export class TwdServiceProvider {
   getEpisodeById(id: number) {
     return new Promise(resolve => {
       this.http
->>>>>>> 17ab37549988e2bfa235d761804a7e12c83ba26b
         .get(`http://ultraconsultas.com.br/apiUltraServicos/ordem.php?id=${id}`)
         .map(res => res.json())
         .subscribe(data => {

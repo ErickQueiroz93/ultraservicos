@@ -5,23 +5,27 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UsersProvider {
 
-  private API_URL = 'http://ultraconsultas.com.br/apiUltraConsultas/login.php'
+  private API_URL = 'http://ultraconsultas.com.br/apiUltraServicos/login.php'
 
   constructor(public http: HttpClient) {
     console.log('Hello UsersProvider Provider');
   }
 
-  login(usuario: string, senha: string) {
+  acessar(usuario: string, senha: string) {
     return new Promise((resolve, reject) => {
       var data = {
         usuario: usuario,
         senha: senha
       };
  
-      this.http.post(this.API_URL + 'login', data)
+      this.http.post(this.API_URL, data)
         .subscribe((result: any) => {
-          resolve(result.json());
-          console.log(result);
+          if(result == null)
+            reject("error.json()");  
+          else
+            resolve(result);
+
+            console.log(result);
         },
         (error) => {
           reject(error.json());
