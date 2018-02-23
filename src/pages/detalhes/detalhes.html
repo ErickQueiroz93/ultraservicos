@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{episode.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+
+    <ion-img width="80" height="80" src="{{episode.thumb}}" style="margin-left: auto; margin-right: auto; display: block;"></ion-img>
+
+    <ion-card-content>
+      <ion-card-title>
+      {{episode.name}} - {{episode.airdate}}
+      </ion-card-title>
+      <p [innerHtml]="episode.summary"></p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

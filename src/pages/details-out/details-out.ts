@@ -1,16 +1,16 @@
-import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TwdServiceProvider } from "../../providers/twd-service/twd-service";
 import { Episode } from "../../app/models/episode";
-import { FinalizarPage } from "../finalizar/finalizar";
-import { CancelarPage } from "../cancelar/cancelar";
+
 
 @IonicPage()
 @Component({
-  selector: "page-details",
-  templateUrl: "details.html"
+  selector: 'page-details-out',
+  templateUrl: 'details-out.html',
 })
-export class DetailsPage {
+export class DetailsOutPage {
+
   public id;
   public obg: any;
   public episode: Episode;
@@ -36,14 +36,7 @@ export class DetailsPage {
   }
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad DetailsPage");
+    console.log('ionViewDidLoad DetailsOutPage');
   }
-  irPaginaFinalizar(){
-    this.navCtrl.push(FinalizarPage, {id: this.navParams.get("id")})
-    console.log("ordem de servico"+this.id)
-  }
-  irPaginaCancelar(){
-    this.navCtrl.push(CancelarPage, {id: this.navParams.get("id")})
-    console.log("ordem de servico"+this.id)
-  }
+
 }

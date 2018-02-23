@@ -9,11 +9,11 @@ export class TwdServiceProvider {
     console.log("Hello HeroService");
   }
 
-  load() {
+  load(id_parceiro: string) {
     return new Promise(resolve => {
       this.http
         .get(
-          `http://ultraconsultas.com.br/apiUltraServicos/ordens.php`
+          `http://ultraconsultas.com.br/apiUltraServicos/ordens.php?id_parceiro=${id_parceiro}`
         )
         .map(res => res.json())
         .subscribe(data => {
@@ -23,11 +23,11 @@ export class TwdServiceProvider {
     });
   }
 
-  loadCanceladas() {
+  loadCanceladas(id_parceiro: string) {
     return new Promise(resolve => {
       this.http
         .get(
-          `http://ultraconsultas.com.br/apiUltraServicos/ordensCanceladas.php`
+          `http://ultraconsultas.com.br/apiUltraServicos/ordensCanceladas.php?id_parceiro=${id_parceiro}`
         )
         .map(res => res.json())
         .subscribe(data => {
@@ -37,11 +37,11 @@ export class TwdServiceProvider {
     });
   }
 
-  loadFinalizadas() {
+  loadFinalizadas(id_parceiro: string) {
     return new Promise(resolve => {
       this.http
         .get(
-          `http://ultraconsultas.com.br/apiUltraServicos/ordensFinalizadas.php`
+          `http://ultraconsultas.com.br/apiUltraServicos/ordensFinalizadas.php?id_parceiro=${id_parceiro}`
         )
         .map(res => res.json())
         .subscribe(data => {

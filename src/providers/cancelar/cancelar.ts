@@ -11,12 +11,12 @@ export class CancelarProvider {
     console.log('Hello CancelarProvider Provider');
   }
 
-  canOS(descricao: string, id_parceiro: string) {
+  canOS(descricao: string, id_ordem: string) {
 
     return new Promise((resolve, reject) => {
       var data = {
         descricao: descricao,
-        id_parceiro: id_parceiro
+        id_ordem: id_ordem
       };
  
       this.http.post(this.API_URL, data)

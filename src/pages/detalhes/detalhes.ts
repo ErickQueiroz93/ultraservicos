@@ -7,10 +7,10 @@ import { CancelarPage } from "../cancelar/cancelar";
 
 @IonicPage()
 @Component({
-  selector: "page-details",
-  templateUrl: "details.html"
+  selector: "page-detalhes",
+  templateUrl: "detalhes.html"
 })
-export class DetailsPage {
+export class DetalhesPage {
   public id;
   public obg: any;
   public episode: Episode;

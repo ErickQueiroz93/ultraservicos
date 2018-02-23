@@ -11,18 +11,18 @@ export class FinalizarProvider {
     console.log('Hello FinalizarProvider Provider');
   }
 
-  finOS(valor: string, descricao: string, id_parceiro: string) {
+  finOS(valor: string, descricao: string, id_ordem: string) {
 
     return new Promise((resolve, reject) => {
       var data = {
         valor: valor,
         descricao: descricao,
-        id_parceiro: id_parceiro
+        id_ordem: id_ordem
       };
  
       this.http.post(this.API_URL, data)
         .subscribe((result: any) => {
-          if(result == null)
+          if(result.status == null)
             reject("error.json()");  
           else
             resolve(result);
@@ -30,7 +30,7 @@ export class FinalizarProvider {
             console.log(result);
         },
         (error) => {
-          reject(error.json());
+          reject(error);
           console.log(error);
         });
     });

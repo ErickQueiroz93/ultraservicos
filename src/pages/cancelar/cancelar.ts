@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { CancelarProvider } from '../../providers/cancelar/cancelar';
 
@@ -11,11 +10,12 @@ import { CancelarProvider } from '../../providers/cancelar/cancelar';
 })
 export class CancelarPage {
   model: CancelarOS;
-  id_parceiro: any;
+  public id: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private cancelarProvider: CancelarProvider, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private cancelarProvider: CancelarProvider) {
     this.model = new CancelarOS();
     this.model.descricao = '';
+    this.id = navParams.get("id");
   }
 
   ionViewDidLoad() {
@@ -24,11 +24,7 @@ export class CancelarPage {
 
   cancelarOS(){
 
-    this.storage.get('id_parceiro').then((val) => {
-      this.id_parceiro = val;
-    });
-
-    this.cancelarProvider.canOS(this.model.descricao, this.id_parceiro)
+    this.cancelarProvider.canOS(this.model.descricao, this.id)
       .then((result: any) => {
         this.toast.create({ message: 'OS cancelada com sucesso!.', position: 'botton', duration: 5000 }).present();
         console.log(result);

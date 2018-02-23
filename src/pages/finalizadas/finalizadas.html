@@ -8,7 +8,7 @@
 
 <ion-content class="home">
   <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
-  <button ion-button type="button" (click)="sort()">Ordenar</button>
+  <!--<button ion-button type="button" (click)="sort()">Ordenar</button>-->
 
   <ion-list>
       <ion-item (click)="getDetail(episode.id)"   *ngFor="let episode of result | search : terms | sort: {property: column, order: order}">

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { FinalizarProvider } from '../../providers/finalizar/finalizar';
 
@@ -12,12 +11,13 @@ import { FinalizarProvider } from '../../providers/finalizar/finalizar';
 })
 export class FinalizarPage {
   model: FinalizarOS;
-  id_parceiro: any;
+  public id: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private finalizarProvider: FinalizarProvider, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private finalizarProvider: FinalizarProvider) {
     this.model = new FinalizarOS();
     this.model.valor = '';
     this.model.descricao = '';
+    this.id = navParams.get("id");
   }
 
   ionViewDidLoad() {
@@ -26,11 +26,7 @@ export class FinalizarPage {
 
   finalizarOS(){
 
-    this.storage.get('id_parceiro').then((val) => {
-      this.id_parceiro = val;
-    });
-
-    this.finalizarProvider.finOS(this.model.valor, this.model.descricao, this.id_parceiro)
+    this.finalizarProvider.finOS(this.model.valor, this.model.descricao, this.id)
       .then((result: any) => {
         this.toast.create({ message: 'OS finalizado com sucesso!.', position: 'botton', duration: 5000 }).present();
         console.log(result);
