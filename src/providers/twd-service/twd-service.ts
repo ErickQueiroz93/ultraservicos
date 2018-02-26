@@ -23,6 +23,34 @@ export class TwdServiceProvider {
     });
   }
 
+  loadTodas(id_parceiro: string) {
+    return new Promise(resolve => {
+      this.http
+        .get(
+          `http://ultraconsultas.com.br/apiUltraServicos/ordensTodas.php?id_parceiro=${id_parceiro}`
+        )
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data); 
+        });
+    });
+  }
+
+  loadParceiros(id_parceiro: string) {
+    return new Promise(resolve => {
+      this.http
+        .get(
+          `http://ultraconsultas.com.br/apiUltraServicos/parceiros.php?id_parceiro=${id_parceiro}`
+        )
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
   loadCanceladas(id_parceiro: string) {
     return new Promise(resolve => {
       this.http

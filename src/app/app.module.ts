@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { CanceladasPage } from '../pages/canceladas/canceladas';
 import { FinalizadasPage } from '../pages/finalizadas/finalizadas';
 import { LoginPage } from '../pages/login/login';
+import { ParceirosPage } from '../pages/parceiros/parceiros';
 import { FinalizarPage } from '../pages/finalizar/finalizar';
 import { CancelarPage } from '../pages/cancelar/cancelar';
 import { TwdServiceProvider } from '../providers/twd-service/twd-service';
@@ -33,7 +34,8 @@ import { FinalizarProvider } from '../providers/finalizar/finalizar';
     FinalizadasPage,
     LoginPage,
     CancelarPage,
-    FinalizarPage
+    FinalizarPage,
+    ParceirosPage
   ],
   imports: [
     HttpModule,
@@ -50,7 +52,8 @@ import { FinalizarProvider } from '../providers/finalizar/finalizar';
     FinalizadasPage,
     LoginPage,
     FinalizarPage,
-    CancelarPage
+    CancelarPage,
+    ParceirosPage
   ],
   providers: [
     StatusBar,
