@@ -41,7 +41,7 @@ export class ParceirosPage {
   }
 
   getDetailOrdensParceiro(id:number){
-    this.navCtrl.push("ParceiroordensPage", {id: id})
+    this.navCtrl.push("PoPage", {id: id})
     console.log("episodio"+id)
   }
 
