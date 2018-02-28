@@ -1,9 +1,7 @@
-import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { TwdServiceProvider } from "../../providers/twd-service/twd-service";
-import { Episode } from "../../app/models/episode";
-//import { FinalizarPage } from "../finalizar/finalizar";
-//import { CancelarPage } from "../cancelar/cancelar";
+import { Component } from '@angular/core';
+import { IonicPage, NavController, MenuController } from 'ionic-angular';
+import { TwdServiceProvider } from '../../providers/twd-service/twd-service';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -11,39 +9,43 @@ import { Episode } from "../../app/models/episode";
   templateUrl: "po.html"
 })
 export class PoPage {
-  public id;
-  public obg: any;
-  public episode: Episode;
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public twdService: TwdServiceProvider
-  ) {
-    this.id = navParams.get("id");
-    this.episode = new Episode();
+  public obj: any;
+  public result: any;
+  public id_parceiro: any;
 
-    console.log("erick"+this.id)
+  descending: boolean = false;
+  order: number;
+  column: string = 'name';
 
-    this.twdService.getEpisodeById(this.id).then(data => {
-      this.obg = data;
-      this.episode.name = this.obg.name;
-      this.episode.airdate = this.obg.airdate;
-      this.episode.summary = this.obg.summary;
-      this.episode.thumb = this.obg.thumb;
-      console.log(this.episode);
-    });
+  constructor(public navCtrl: NavController,public twdService: TwdServiceProvider, public menuCtrl: MenuController, private storage: Storage) {
+    this.getAllFinalizadas();
   }
 
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad PoPage");
+  getAllFinalizadas() {
+    this.storage.get('id_parceiro')
+    .then((val) => {
+      this.id_parceiro = val;
+    })
+    .then( (res) => {
+      this.twdService.loadTodas( this.id_parceiro )
+      .then(data => {
+        console.log(data);
+        this.obj = data;
+        this.result = this.obj._embedded.episodes;
+        console.log(data);
+      });
+    })
   }
-  /*irPaginaFinalizar(){
-    this.navCtrl.push(FinalizarPage, {id: this.navParams.get("id")})
-    console.log("ordem de servico"+this.id)
+
+  getDetail(id:number){
+    this.navCtrl.push("DetalhesPage", {id: id})
+    console.log("episodio"+id)
   }
-  irPaginaCancelar(){
-    this.navCtrl.push(CancelarPage, {id: this.navParams.get("id")})
-    console.log("ordem de servico"+this.id)
-  }*/
+
+  sort(){
+    this.descending = !this.descending;
+    this.order = this.descending ? 1 : -1;
+  }
+
 }

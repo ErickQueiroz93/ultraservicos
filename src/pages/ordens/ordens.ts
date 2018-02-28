@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { TwdServiceProvider } from '../../providers/twd-service/twd-service';
 import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
-  selector: 'page-parceiros',
-  templateUrl: 'parceiros.html',
+  selector: 'page-ordens',
+  templateUrl: 'ordens.html',
 })
-export class ParceirosPage {
+export class OrdensPage {
 
   public obj: any;
   public result: any;
@@ -18,18 +18,20 @@ export class ParceirosPage {
   order: number;
   column: string = 'name';
 
-  constructor(public navCtrl: NavController,public twdService: TwdServiceProvider, public menuCtrl: MenuController, private storage: Storage) {
-    this.getAllParceiros();
+  public id: any;
+
+  constructor(public navCtrl: NavController,public twdService: TwdServiceProvider, public menuCtrl: MenuController, private storage: Storage, public navParams: NavParams) {
+    this.getAllTodas();
+    this.id = navParams.get("id");
   }
 
-  getAllParceiros() {
-
+  getAllTodas() {
     this.storage.get('id_parceiro')
     .then((val) => {
       this.id_parceiro = val;
     })
     .then( (res) => {
-      this.twdService.loadParceiros( this.id_parceiro )
+      this.twdService.loadTodas( this.id )
       .then(data => {
         console.log(data);
         this.obj = data;
@@ -37,21 +39,20 @@ export class ParceirosPage {
         console.log(data);
       });
     })
-    
   }
 
-  getDetailOrdensParceiro(id:number){
-    this.navCtrl.push("OrdensPage", {id: id})
+  getDetailNovo(id:number){
+    this.navCtrl.push("DetalhesPage", {id: id})
     console.log("episodio"+id)
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ParceirosPage');
   }
 
   sort(){
     this.descending = !this.descending;
     this.order = this.descending ? 1 : -1;
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ParceirosPage');
   }
 
 }
