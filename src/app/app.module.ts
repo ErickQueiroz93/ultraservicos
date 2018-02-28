@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { CanceladasPage } from '../pages/canceladas/canceladas';
 import { FinalizadasPage } from '../pages/finalizadas/finalizadas';
 import { LoginPage } from '../pages/login/login';
+import { PagarPage } from '../pages/pagar/pagar';
 import { ParceirosPage } from '../pages/parceiros/parceiros';
 import { FinalizarPage } from '../pages/finalizar/finalizar';
 import { CancelarPage } from '../pages/cancelar/cancelar';
@@ -23,6 +24,11 @@ import { IonicStorageModule } from '@ionic/storage';
 import { CancelarProvider } from '../providers/cancelar/cancelar';
 import { FinalizarProvider } from '../providers/finalizar/finalizar';
 
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
+import { PagarProvider } from '../providers/pagar/pagar';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +41,8 @@ import { FinalizarProvider } from '../providers/finalizar/finalizar';
     LoginPage,
     CancelarPage,
     FinalizarPage,
-    ParceirosPage
+    ParceirosPage,
+    PagarPage
   ],
   imports: [
     HttpModule,
@@ -53,7 +60,8 @@ import { FinalizarProvider } from '../providers/finalizar/finalizar';
     LoginPage,
     FinalizarPage,
     CancelarPage,
-    ParceirosPage
+    ParceirosPage,
+    PagarPage
   ],
   providers: [
     StatusBar,
@@ -62,7 +70,12 @@ import { FinalizarProvider } from '../providers/finalizar/finalizar';
     TwdServiceProvider,
     UsersProvider,
     CancelarProvider,
-    FinalizarProvider
+    FinalizarProvider,
+    FileTransfer,
+    FileTransferObject,
+    File,
+    Camera,
+    PagarProvider
   ]
 })
 export class AppModule {}

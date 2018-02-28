@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Pagar OS</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Valor</ion-label>
+      <ion-input type="number" id="valor" name="valor" [(ngModel)]="model.valor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <p>{{imageURI}}</p>
+      <button ion-button color="secondary" (click)="getImage()">Tirar foto</button>
+    </ion-item>
+    <ion-item>
+      <h4>Imagem Preview</h4>
+      <img src="{{imageFileName}}" *ngIf="imageFileName" alt="File" width="300" />
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="uploadFile()">Pagar</button>
+    </ion-item>
+  </ion-list>
+  <!--<button ion-button full (click)="finalizarOS()">Pagar</button>-->
+</ion-content>

@@ -4,6 +4,7 @@ import { TwdServiceProvider } from "../../providers/twd-service/twd-service";
 import { Episode } from "../../app/models/episode";
 import { FinalizarPage } from "../finalizar/finalizar";
 import { CancelarPage } from "../cancelar/cancelar";
+import { PagarPage } from "../pagar/pagar";
 
 @IonicPage()
 @Component({
@@ -37,6 +38,10 @@ export class DetalhesPage {
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad DetailsPage");
+  }
+  pagarOS(){
+    this.navCtrl.push(PagarPage, {id: this.navParams.get("id")})
+    console.log("ordem de servico"+this.id)
   }
   irPaginaFinalizar(){
     this.navCtrl.push(FinalizarPage, {id: this.navParams.get("id")})
