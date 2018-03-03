@@ -11,12 +11,11 @@ export class PagarProvider {
     console.log('Hello PagarProvider Provider');
   }
 
-  pagarOrdemServico(valor: string, comprovante: string, id_ordem: string) {
+  pagarOrdemServico(valor: string, id_ordem: string) {
 
     return new Promise((resolve, reject) => {
       var data = {
         valor: valor,
-        comprovante: comprovante,
         id_ordem: id_ordem
       };
  

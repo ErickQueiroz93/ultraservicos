@@ -11,16 +11,16 @@
       <ion-input type="number" id="valor" name="valor" [(ngModel)]="model.valor"></ion-input>
     </ion-item>
     <ion-item>
-      <p>{{imageURI}}</p>
-      <button ion-button color="secondary" (click)="getImage()">Tirar foto</button>
+      <p>Caminho: {{imageURI}}</p>
+      <button ion-button full color="secondary" (click)="getImage()">Pegar Documento</button>
     </ion-item>
     <ion-item>
       <h4>Imagem Preview</h4>
-      <img src="{{imageFileName}}" *ngIf="imageFileName" alt="File" width="300" />
+      <img src="{{imageFileName}}" *ngIf="imageFileName" alt="File" width="250" />
     </ion-item>
     <ion-item>
-      <button ion-button (click)="uploadFile()">Pagar</button>
+      <button ion-button full (click)="uploadFile()">Carregar Imagem</button>
     </ion-item>
   </ion-list>
-  <!--<button ion-button full (click)="finalizarOS()">Pagar</button>-->
+  <button ion-button full (click)="pagarOrdemServicoAgora()">Pagar OS</button>
 </ion-content>

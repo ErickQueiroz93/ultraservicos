@@ -15,7 +15,6 @@ export class PagarPage {
   model: PagarOS;
 
   public id;
-  public comprovante;
 
   public imageURI:any;
   public imageFileName:any;
@@ -59,33 +58,31 @@ export class PagarPage {
       fileKey: 'ionicfile',
       fileName: 'ionicfile',
       chunkedMode: false,
-      mimeType: "image/jpeg",
+      mimeType: "multipart/form-data",
       headers: {}
     }
   
     fileTransfer.upload(this.imageURI, 'http://ultraconsultas.com.br/apiUltraServicos/uploadImage.php', options)
       .then((data) => {
-      console.log(data+" Uploaded Successfully");
-      this.comprovante = data;
-      this.imageFileName = "http://ultraconsultas.com.br/apiUltraServicos/ionicfile.jpg"
+      this.imageFileName = "http://ultraconsultas.com.br/comprovantesParceiros/ionicfile.jpg"
       loader.dismiss();
-      this.presentToast("Imagem carregada com sucesso");
+      this.presentToast("Imagem carregada com sucesso!");
     }, (err) => {
-      console.log(err);
+      alert(err);
       loader.dismiss();
       this.presentToast(err);
-    }).then((data) => {
-      this.pagarProvider.pagarOrdemServico(this.model.valor, this.comprovante, this.id)
+    });
+  }
+
+  pagarOrdemServicoAgora(){
+    this.pagarProvider.pagarOrdemServico(this.model.valor, this.id)
       .then((result: any) => {
         this.toastCtrl.create({ message: 'OS paga com sucesso!.', position: 'botton', duration: 5000 }).present();
-        console.log(result);
-
         this.navCtrl.setRoot(HomePage);
       })
       .catch((error: any) => {
         this.toastCtrl.create({ message: 'Erro ao pagar OS.', position: 'botton', duration: 5000 }).present();
       });
-    });
   }
 
   presentToast(msg) {
