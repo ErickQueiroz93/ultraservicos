@@ -8,13 +8,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CanceladasPage } from '../pages/canceladas/canceladas';
 import { FinalizadasPage } from '../pages/finalizadas/finalizadas';
+import { PagasPage } from '../pages/pagas/pagas';
+import { ComissionadosPage } from '../pages/comissionados/comissionados';
 import { LoginPage } from '../pages/login/login';
 import { PagarPage } from '../pages/pagar/pagar';
 import { ParceirosPage } from '../pages/parceiros/parceiros';
 import { FinalizarPage } from '../pages/finalizar/finalizar';
 import { CancelarPage } from '../pages/cancelar/cancelar';
 import { TwdServiceProvider } from '../providers/twd-service/twd-service';
-import {  HttpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { SearchPipe } from '../pipes/search/search';
 import { SortPipe } from '../pipes/sort/sort';
 import { UsersProvider } from '../providers/users/users';
@@ -38,6 +40,8 @@ import { PagarProvider } from '../providers/pagar/pagar';
     SortPipe,
     CanceladasPage,
     FinalizadasPage,
+    PagasPage,
+    ComissionadosPage,
     LoginPage,
     CancelarPage,
     FinalizarPage,
@@ -57,6 +61,8 @@ import { PagarProvider } from '../providers/pagar/pagar';
     HomePage,
     CanceladasPage,
     FinalizadasPage,
+    PagasPage,
+    ComissionadosPage,
     LoginPage,
     FinalizarPage,
     CancelarPage,

@@ -9,6 +9,8 @@ import { LoginPage } from '../pages/login/login';
 import { CanceladasPage } from '../pages/canceladas/canceladas';
 import { FinalizadasPage } from '../pages/finalizadas/finalizadas';
 import { ParceirosPage } from '../pages/parceiros/parceiros';
+import { PagasPage } from '../pages/pagas/pagas';
+import { ComissionadosPage } from '../pages/comissionados/comissionados';
 
 @Component({
   templateUrl: 'app.html'
@@ -48,6 +50,14 @@ export class MyApp {
   }
   openParceiros(){
     this.nav.push(ParceirosPage);
+  }
+
+  openPagas(){
+    this.nav.push(PagasPage);
+  }
+
+  openComissionadas(){
+    this.nav.push(ComissionadosPage);
   }
   
 }

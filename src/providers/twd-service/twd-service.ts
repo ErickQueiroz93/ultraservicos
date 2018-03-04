@@ -79,6 +79,34 @@ export class TwdServiceProvider {
     });
   }
 
+  loadPagas(id_parceiro: string) {
+    return new Promise(resolve => {
+      this.http
+        .get(
+          `http://ultraconsultas.com.br/apiUltraServicos/pagas.php?id_parceiro=${id_parceiro}`
+        )
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  loadComissionadas(id_parceiro: string) {
+    return new Promise(resolve => {
+      this.http
+        .get(
+          `http://ultraconsultas.com.br/apiUltraServicos/comissionadas.php?id_parceiro=${id_parceiro}`
+        )
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
   getEpisodeById(id: number) {
     return new Promise(resolve => {
       this.http

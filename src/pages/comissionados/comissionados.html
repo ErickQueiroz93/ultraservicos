@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <ion-icon menuToggle name="apps"></ion-icon> O.S não pagas
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home">
+  <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+  <!--<button ion-button type="button" (click)="sort()">Ordenar</button>-->
+
+  <ion-list>
+      <ion-item (click)="getDetail(episode.id)"   *ngFor="let episode of result | search : terms | sort: {property: column, order: order}">
+       <ion-avatar item-left *ngIf="episode.image != null">
+         <img src="{{episode.image}}">
+       </ion-avatar>
+       <h2>{{episode.name}}</h2>
+     </ion-item> 
+   </ion-list>
+ 
+</ion-content>
