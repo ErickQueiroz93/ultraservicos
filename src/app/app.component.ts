@@ -45,6 +45,11 @@ export class MyApp {
   openFinalizadas(){
     this.nav.push(FinalizadasPage);
   }
+  openFinalizadasWeb(){
+    //this.nav.push(FinalizadasPage);
+    window.open('http://ultraconsultas.com.br/apiUltraServicos/pagarMultiplasOrdens.php?id_parceiro='+this.id_parceiro, '_system', 'location=yes'); 
+    return false;
+  }
   openEmAberto(){
     this.nav.push(HomePage);
   }
